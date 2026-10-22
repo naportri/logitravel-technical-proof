@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Technical Proof - Gestor de Textos</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="app-container">
+        
+        <!-- Vista Principal -->
+        <div id="mainView" class="view active">
+            <h1>This is a technical proof</h1>
+            <p class="subtitle">
+                Lorem ipsum dolor sit amet consectetur adipiscing, elit mus primis nec inceptos. Lacinia habitasse arcu molestie maecenas cursus quam nunc, hendrerit posuere augue fames dictumst placerat porttitor, dis mi pharetra vestibulum venenatis phasellus.
+            </p>
+
+            <div class="list-container">
+                <ul id="textList"></ul>
+            </div>
+
+            <div class="actions-section">
+                <div class="left-actions">
+                    <button id="undoBtn" class="btn-icon" title="Deshacer" disabled>
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 7v6h6"></path><path d="M21 17a9 9 0 00-9-9 9 9 0 00-6 2.3L3 13"></path></svg>
+                    </button>
+                    <button id="deleteBtn" class="btn-outline" disabled>DELETE</button>
+                </div>
+                <button id="openAddViewBtn" class="btn-primary">ADD</button>
+            </div>
+        </div>
+
+        <!-- Vista de Agregar Elemento (Modal o Pantalla de inserción) -->
+        <div id="addView" class="view">
+            <h2>Add item to list</h2>
+            
+            <div class="input-wrapper">
+                <input type="text" id="textInput" placeholder="Type the text here...">
+            </div>
+
+            <div class="actions-section right-aligned">
+                <button id="addBtn" class="btn-primary">ADD</button>
+                <button id="cancelBtn" class="btn-outline">CANCEL</button>
+            </div>
+        </div>
+
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>

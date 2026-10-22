@@ -1,0 +1,36 @@
+.list-container {
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  height: 220px;
+  overflow-y: auto;
+  margin-bottom: 30px;
+  background: #ffffff;
+  width: 100%;
+
+  ul {
+    list-style: none;
+    width: 100%;
+
+    li {
+      padding: 12px 20px;
+      border-bottom: 1px solid #f0f0f0;
+      cursor: pointer;
+      user-select: none;
+      font-size: 0.95rem;
+      color: #444;
+
+      &:last-child {
+        border-bottom: none;
+      }
+
+      &:hover {
+        background-color: #f9f9f9;
+      }
+
+      &.selected {
+        background-color: var(--primary-color);
+        color: #ffffff;
+      }
+    }
+  }
+}
