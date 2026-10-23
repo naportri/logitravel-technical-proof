@@ -1,15 +1,11 @@
 export interface Item {
-  id: number;
+  id: string;
   text: string;
 }
-
 export interface MainViewProps {
   items: Item[];
-  selectedIds: number[];
   historyLength: number;
-  onItemClick: (id: number) => void;
-  onItemDoubleClick: (id: number) => void;
+  onDeleteItems: (ids: string[]) => void;
   onUndo: () => void;
-  onDelete: () => void;
   onNavigateToAdd: () => void;
 }

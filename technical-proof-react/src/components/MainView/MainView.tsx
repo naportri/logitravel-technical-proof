@@ -1,16 +1,40 @@
+import { useState } from "react";
 import type { MainViewProps } from "./types";
 import "./styles.scss";
 
 export default function MainView({
   items,
-  selectedIds,
   historyLength,
-  onItemClick,
-  onItemDoubleClick,
+  onDeleteItems,
   onUndo,
-  onDelete,
   onNavigateToAdd,
 }: MainViewProps) {
+  const [selectedIds, setSelectedIds] = useState<string[]>([]);
+
+  const handleItemClick = (id: string) => {
+    if (selectedIds.includes(id)) {
+      setSelectedIds(selectedIds.filter((itemId) => itemId !== id));
+    } else {
+      setSelectedIds([...selectedIds, id]);
+    }
+  };
+
+  const handleItemDoubleClick = (id: string) => {
+    onDeleteItems([id]);
+    setSelectedIds(selectedIds.filter((itemId) => itemId !== id));
+  };
+
+  const handleDeleteClick = () => {
+    if (selectedIds.length === 0) return;
+    onDeleteItems(selectedIds);
+    setSelectedIds([]);
+  };
+
+  const handleUndoClick = () => {
+    onUndo();
+    setSelectedIds([]);
+  };
+
   return (
     <div className="view active">
       <h1>This is a technical proof</h1>
@@ -27,8 +51,8 @@ export default function MainView({
             <li
               key={item.id}
               className={selectedIds.includes(item.id) ? "selected" : ""}
-              onClick={() => onItemClick(item.id)}
-              onDoubleClick={() => onItemDoubleClick(item.id)}
+              onClick={() => handleItemClick(item.id)}
+              onDoubleClick={() => handleItemDoubleClick(item.id)}
             >
               {item.text}
             </li>
@@ -41,7 +65,7 @@ export default function MainView({
           <button
             className="btn-icon"
             title="Deshacer"
-            onClick={onUndo}
+            onClick={handleUndoClick}
             disabled={historyLength === 0}
           >
             <svg
@@ -58,14 +82,14 @@ export default function MainView({
           </button>
           <button
             className="btn-outline"
-            onClick={onDelete}
+            onClick={handleDeleteClick}
             disabled={selectedIds.length === 0}
           >
-            DELETE
+            delete
           </button>
         </div>
         <button className="btn-primary" onClick={onNavigateToAdd}>
-          ADD
+          add
         </button>
       </div>
     </div>

@@ -1,6 +1,4 @@
 export interface AddViewProps {
-  inputText: string;
-  onInputChange: (text: string) => void;
-  onAdd: () => void;
+  onAdd: (text: string) => void;
   onCancel: () => void;
 }
